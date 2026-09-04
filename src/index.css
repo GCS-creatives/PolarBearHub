@@ -1,0 +1,91 @@
+:root {
+  /* Lowrance palette, drawn from the mascot/folder mockup */
+  --lh-blue-900: #123a73;
+  --lh-blue-700: #1b4f96;
+  --lh-blue-500: #2e6fd9;
+  --lh-blue-100: #e8f1fd;
+  --lh-ice: #f3f8fe;
+  --lh-white: #ffffff;
+  --lh-ink: #12203a;
+  --lh-sticky: #f7dfa0;
+  --lh-sticky-shadow: #e0c37c;
+  --lh-paw: #a9c6ee;
+
+  --lh-font-display: 'Baloo 2', 'Trebuchet MS', sans-serif;
+  --lh-font-body: 'Nunito Sans', 'Segoe UI', sans-serif;
+
+  --lh-radius-lg: 20px;
+  --lh-radius-md: 14px;
+  --lh-radius-sm: 8px;
+  --lh-shadow-folder: 0 10px 24px rgba(18, 58, 115, 0.18);
+  --lh-shadow-folder-hover: 0 18px 34px rgba(18, 58, 115, 0.26);
+  --lh-focus-ring: 3px solid #ffb703;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--lh-font-body);
+  color: var(--lh-ink);
+  background: var(--lh-ice);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .lh-display {
+  font-family: var(--lh-font-display);
+  margin: 0;
+}
+
+a { color: inherit; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+/* Visible, high-contrast focus state everywhere - never hover-only */
+:focus-visible {
+  outline: var(--lh-focus-ring);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--lh-blue-900);
+  color: white;
+  padding: 10px 16px;
+  z-index: 1000;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

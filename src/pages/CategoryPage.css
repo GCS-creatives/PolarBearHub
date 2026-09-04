@@ -1,0 +1,75 @@
+.lh-catpage__banner {
+  background: linear-gradient(180deg, var(--lh-blue-700), var(--lh-blue-500));
+  color: white;
+  padding: 20px 24px 34px;
+  transform-origin: top center;
+  animation: lh-banner-open 320ms ease both;
+}
+
+@keyframes lh-banner-open {
+  0% { transform: scaleY(0.85); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.lh-catpage__back {
+  color: #e3edfb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.lh-catpage__back:hover, .lh-catpage__back:focus-visible { color: white; }
+
+.lh-catpage__heading {
+  max-width: 1100px;
+  margin: 18px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.lh-catpage__heading h1 {
+  font-size: clamp(26px, 4vw, 36px);
+}
+
+.lh-catpage__desc {
+  margin: 4px 0 0;
+  color: #e3edfb;
+  font-size: 15px;
+}
+
+.lh-catpage__bear {
+  margin-left: auto;
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .lh-catpage__bear { display: block; }
+}
+
+.lh-catpage__cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.lh-catpage__cards > a {
+  animation: lh-card-riseup 320ms ease both;
+}
+
+/* Gentle stagger for the first ~10 cards so they feel like they're being
+   pulled out of the folder one after another, not popping in all at once. */
+.lh-catpage__cards > a:nth-child(1) { animation-delay: 40ms; }
+.lh-catpage__cards > a:nth-child(2) { animation-delay: 80ms; }
+.lh-catpage__cards > a:nth-child(3) { animation-delay: 120ms; }
+.lh-catpage__cards > a:nth-child(4) { animation-delay: 160ms; }
+.lh-catpage__cards > a:nth-child(5) { animation-delay: 200ms; }
+.lh-catpage__cards > a:nth-child(n+6) { animation-delay: 220ms; }
+
+@keyframes lh-card-riseup {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,40 @@
+.lh-footer {
+  background: var(--lh-blue-900);
+  color: #cfe0f8;
+  text-align: center;
+  margin-top: 40px;
+  overflow: hidden;
+}
+
+.lh-footer__scene {
+  width: 100%;
+  aspect-ratio: 1312 / 250;
+  background-image: url('/images/snow-scene-band.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* This is decorative illustration, not content, so it's hidden from
+   screen readers via role="img" + a full text alt above; no separate
+   text content is lost when it doesn't load. */
+
+.lh-footer__credits {
+  padding: 18px 24px 22px;
+}
+
+.lh-footer__paw {
+  margin: 0 auto 8px;
+}
+
+.lh-footer__title {
+  font-family: var(--lh-font-display);
+  font-weight: 600;
+  color: white;
+  margin: 0 0 4px;
+}
+
+.lh-footer__credit {
+  font-size: 12.5px;
+  margin: 0;
+  opacity: 0.85;
+}

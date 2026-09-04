@@ -1,0 +1,196 @@
+.lh-admin-login {
+  max-width: 420px;
+  margin: 60px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+}
+
+.lh-admin-login__btn {
+  background: var(--lh-blue-700);
+  color: white;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.lh-admin-login__btn:hover, .lh-admin-login__btn:focus-visible { background: var(--lh-blue-900); }
+
+.lh-admin-login__note {
+  font-size: 13px;
+  color: #6a7a95;
+}
+
+.lh-admin-login__error {
+  color: #b3261e;
+  font-size: 14px;
+}
+
+/* ---- shared admin shell ---- */
+.lh-admin-shell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.lh-admin-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--lh-blue-100);
+}
+
+.lh-admin-nav a, .lh-admin-nav button {
+  text-decoration: none;
+  color: var(--lh-blue-900);
+  font-weight: 700;
+  font-size: 14px;
+  background: var(--lh-blue-100);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+.lh-admin-nav a.active {
+  background: var(--lh-blue-700);
+  color: white;
+}
+
+.lh-admin-nav .lh-admin-nav__spacer { flex: 1; }
+
+.lh-admin-toast {
+  background: #e6f6ec;
+  border: 1.5px solid #a9d9bb;
+  color: #1e5f38;
+  padding: 10px 16px;
+  border-radius: var(--lh-radius-sm);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.lh-admin-toast--error {
+  background: #fbeae8;
+  border-color: #e3a49c;
+  color: #8a271e;
+}
+
+.lh-admin-card {
+  background: white;
+  border: 1.5px solid var(--lh-blue-100);
+  border-radius: var(--lh-radius-md);
+  padding: 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 3px 10px rgba(18,58,115,0.06);
+}
+
+.lh-admin-card h2 {
+  font-family: var(--lh-font-display);
+  font-size: 19px;
+  color: var(--lh-blue-900);
+  margin-bottom: 14px;
+}
+
+.lh-field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+.lh-field label { font-size: 13px; font-weight: 700; color: var(--lh-blue-900); }
+.lh-field input, .lh-field select, .lh-field textarea {
+  padding: 9px 12px;
+  border: 1.5px solid #cbd9ee;
+  border-radius: 8px;
+  font-family: var(--lh-font-body);
+  font-size: 14px;
+}
+.lh-field input:focus-visible, .lh-field select:focus-visible, .lh-field textarea:focus-visible {
+  outline: var(--lh-focus-ring);
+}
+
+.lh-admin-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.lh-admin-row > .lh-field { flex: 1; min-width: 200px; }
+
+.lh-admin-primary-btn {
+  background: var(--lh-blue-700);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.lh-admin-primary-btn:hover, .lh-admin-primary-btn:focus-visible { background: var(--lh-blue-900); }
+
+.lh-admin-secondary-btn {
+  background: white;
+  color: var(--lh-blue-900);
+  border: 1.5px solid var(--lh-blue-900);
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.lh-admin-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--lh-blue-700);
+  margin: 6px 0 14px;
+  font-size: 13.5px;
+}
+
+.lh-admin-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eef3fb;
+}
+
+.lh-admin-list-item:last-child { border-bottom: none; }
+
+.lh-admin-list-item__main { flex: 1; min-width: 0; }
+.lh-admin-list-item__title { font-weight: 700; font-size: 14.5px; }
+.lh-admin-list-item__meta { font-size: 12.5px; color: #6a7a95; }
+
+.lh-admin-mini-btn {
+  background: var(--lh-blue-100);
+  border: none;
+  color: var(--lh-blue-900);
+  border-radius: 6px;
+  padding: 5px 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.lh-admin-mini-btn--danger { background: #fbeae8; color: #8a271e; }
+.lh-admin-mini-btn:disabled { opacity: 0.4; }
+
+.lh-admin-confirm {
+  position: fixed;
+  inset: 0;
+  background: rgba(18,32,58,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+.lh-admin-confirm__box {
+  background: white;
+  border-radius: var(--lh-radius-md);
+  padding: 24px;
+  max-width: 380px;
+  text-align: center;
+}
+.lh-admin-confirm__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}

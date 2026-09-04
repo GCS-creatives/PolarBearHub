@@ -1,0 +1,17 @@
+.lh-featured {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 8px;
+}
+
+.lh-featured__heading {
+  font-size: 22px;
+  color: var(--lh-blue-900);
+  margin-bottom: 14px;
+}
+
+.lh-featured__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}

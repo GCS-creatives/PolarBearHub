@@ -1,0 +1,99 @@
+.lh-folder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--lh-blue-900);
+  background: white;
+  border: 2.5px solid var(--lh-blue-900);
+  border-radius: var(--lh-radius-md);
+  padding: 0;
+  box-shadow: var(--lh-shadow-folder);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  overflow: visible;
+}
+
+/* "Opening" flourish, played briefly before navigating to the category
+   page. Purely decorative — prefers-reduced-motion (global rule in
+   index.css) collapses all of this to ~0ms. */
+.lh-folder--opening {
+  animation: lh-folder-pop 260ms ease forwards;
+  z-index: 5;
+}
+
+.lh-folder__papers {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.lh-folder__paper {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 6px;
+  height: 60%;
+  background: var(--lh-ice);
+  border: 2px solid var(--lh-blue-900);
+  border-radius: 6px 6px 0 0;
+  opacity: 0;
+  transform: translateY(0);
+}
+
+.lh-folder--opening .lh-folder__paper--1 {
+  animation: lh-paper-slide 260ms ease forwards;
+}
+.lh-folder--opening .lh-folder__paper--2 {
+  left: 20%;
+  right: 20%;
+  animation: lh-paper-slide 260ms ease 30ms forwards;
+}
+
+@keyframes lh-folder-pop {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(1.06) rotate(-1.5deg); }
+  100% { transform: scale(1.03) rotate(0deg); }
+}
+
+@keyframes lh-paper-slide {
+  0% { opacity: 0; transform: translateY(10%); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(-70%); }
+}
+
+.lh-folder:nth-child(3n+1) .lh-folder__body { background: var(--lh-blue-700); color: white; }
+.lh-folder:nth-child(3n+1) .lh-folder__tab { background: var(--lh-blue-500); color: white; }
+
+.lh-folder:hover,
+.lh-folder:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: var(--lh-shadow-folder-hover);
+}
+
+.lh-folder__tab {
+  font-family: var(--lh-font-display);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 8px 16px;
+  background: var(--lh-blue-100);
+  border-bottom: 2.5px solid var(--lh-blue-900);
+}
+
+.lh-folder__body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 18px;
+}
+
+.lh-folder__paw {
+  opacity: 0.55;
+}
+
+.lh-folder__desc {
+  padding: 0 16px 16px;
+  font-size: 13px;
+  color: #4a5c7a;
+}

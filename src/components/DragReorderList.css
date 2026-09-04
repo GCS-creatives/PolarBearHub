@@ -1,0 +1,42 @@
+.lh-draglist__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.lh-draglist__row--over {
+  background: var(--lh-blue-100);
+  box-shadow: inset 0 0 0 2px var(--lh-blue-500);
+}
+
+.lh-draglist__row--dragging {
+  opacity: 0.45;
+}
+
+.lh-draglist__row > .lh-admin-list-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.lh-draglist__handle {
+  cursor: grab;
+  color: #9fb2cf;
+  font-size: 16px;
+  padding: 6px 4px;
+  line-height: 1;
+  user-select: none;
+  touch-action: none;
+}
+
+.lh-draglist__handle:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 520px) {
+  /* Dragging is fiddly on small touch screens; the keyboard/tap
+     up-down buttons remain the primary path there, handle stays but
+     shrinks out of the way. */
+  .lh-draglist__handle { font-size: 14px; }
+}
