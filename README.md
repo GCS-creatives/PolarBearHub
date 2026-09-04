@@ -56,7 +56,14 @@ No passwords are stored by this app — Identity (built on GoTrue) handles all o
 ## 4. Netlify Blobs (the database)
 
 Netlify Blobs works automatically for sites deployed on Netlify — there's
-nothing to provision. The app creates a store called
+nothing to provision in the dashboard, **but** it does require one thing in
+code: these functions use the classic `handler(event, context)` signature
+("Lambda compatibility mode"), and Netlify does **not** auto-configure the
+Blobs environment for that mode. Each function calls `connectLambda(event)`
+(from `@netlify/blobs`) as its first line before touching the store — this
+is already done in `categories.js` and `resources.js`. Skipping that call
+is the most common cause of a `MissingBlobsEnvironmentError`, and it's a
+code fix, not an environment variable or dashboard setting. The app creates a store called
 `lowrance-hub-content` on first read and seeds it with the sample
 categories/resources from `src/data/seed.js`. From then on, every admin
 edit writes straight back to that same store with strong-consistency reads,

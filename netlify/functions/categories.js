@@ -6,6 +6,7 @@
 //   DELETE /categories/:id           -> delete (admin, blocked if resources still assigned)
 //   POST   /categories/reorder       -> bulk reorder (admin)  body: { orderedIds: [...] }
 
+import { connectLambda } from '@netlify/blobs';
 import { readContent, writeContent } from './utils/store.js';
 import { requireAdmin, json } from './utils/auth.js';
 import { validateCategory } from './utils/validate.js';
@@ -15,6 +16,10 @@ function segments(path) {
 }
 
 export async function handler(event, context) {
+  // Required for Netlify Blobs in classic Lambda-compatible functions -
+  // without this, getStore() throws MissingBlobsEnvironmentError.
+  connectLambda(event);
+
   const [idOrAction] = segments(event.path);
   const isPublic = event.httpMethod === 'GET' && event.queryStringParameters?.scope === 'public';
 
