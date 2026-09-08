@@ -50,14 +50,15 @@ export default function AdminCategories({ user }) {
     e.preventDefault();
     try {
       if (editingId) {
-        await adminUpdateCategory(editingId, form);
+        const updated = await adminUpdateCategory(editingId, form);
+        setCategories((prev) => prev.map((c) => (c.id === updated.id ? updated : c)).sort((a, b) => a.order - b.order));
         setToast({ type: 'ok', text: 'Filed! Your category has been updated.' });
       } else {
-        await adminCreateCategory(form);
+        const created = await adminCreateCategory(form);
+        setCategories((prev) => [...prev, created].sort((a, b) => a.order - b.order));
         setToast({ type: 'ok', text: 'Filed! Your new folder has been created.' });
       }
       resetForm();
-      loadAll();
     } catch (err) {
       setToast({ type: 'error', text: err.message });
     }
@@ -70,9 +71,9 @@ export default function AdminCategories({ user }) {
   async function handleDeleteConfirmed() {
     try {
       await adminDeleteCategory(pendingDelete.id);
+      setCategories((prev) => prev.filter((c) => c.id !== pendingDelete.id));
       setToast({ type: 'ok', text: 'Folder removed.' });
       setPendingDelete(null);
-      loadAll();
     } catch (err) {
       setToast({ type: 'error', text: err.message });
       setPendingDelete(null);
@@ -86,8 +87,8 @@ export default function AdminCategories({ user }) {
     const ids = categories.map((c) => c.id);
     [ids[idx], ids[swapWith]] = [ids[swapWith], ids[idx]];
     try {
-      await adminReorderCategories(ids);
-      loadAll();
+      const updated = await adminReorderCategories(ids);
+      setCategories(updated.sort((a, b) => a.order - b.order));
     } catch (err) {
       setToast({ type: 'error', text: err.message });
     }
@@ -95,8 +96,8 @@ export default function AdminCategories({ user }) {
 
   async function handleDragReorder(orderedIds) {
     try {
-      await adminReorderCategories(orderedIds);
-      loadAll();
+      const updated = await adminReorderCategories(orderedIds);
+      setCategories(updated.sort((a, b) => a.order - b.order));
     } catch (err) {
       setToast({ type: 'error', text: err.message });
     }

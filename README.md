@@ -63,7 +63,17 @@ Blobs environment for that mode. Each function calls `connectLambda(event)`
 (from `@netlify/blobs`) as its first line before touching the store — this
 is already done in `categories.js` and `resources.js`. Skipping that call
 is the most common cause of a `MissingBlobsEnvironmentError`, and it's a
-code fix, not an environment variable or dashboard setting. The app creates a store called
+code fix, not an environment variable or dashboard setting.
+
+**Consistency:** the store uses Netlify Blobs' default *eventual*
+consistency, not "strong." Strong consistency needs an "uncached edge URL"
+in the request context that isn't reliably available to Lambda-compatible
+functions in production (it throws `BlobsConsistencyError` there, even
+though it works under `netlify dev` locally) — a known gap between Blobs'
+strong-consistency mode and this function style. It isn't needed here
+anyway: every write returns the freshly-written object directly, and the
+admin dashboard merges that response straight into its own list instead of
+re-fetching, so edits show up instantly regardless. The app creates a store called
 `lowrance-hub-content` on first read and seeds it with the sample
 categories/resources from `src/data/seed.js`. From then on, every admin
 edit writes straight back to that same store with strong-consistency reads,

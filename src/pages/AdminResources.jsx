@@ -71,14 +71,15 @@ export default function AdminResources({ user }) {
     };
     try {
       if (editingId) {
-        await adminUpdateResource(editingId, payload);
+        const updated = await adminUpdateResource(editingId, payload);
+        setResources((prev) => prev.map((r) => (r.id === updated.id ? updated : r)));
         setToast({ type: 'ok', text: 'Filed! Your resource has been updated.' });
       } else {
-        await adminCreateResource(payload);
+        const created = await adminCreateResource(payload);
+        setResources((prev) => [...prev, created]);
         setToast({ type: 'ok', text: 'Filed! Your new resource has been added.' });
       }
       resetForm();
-      loadAll();
     } catch (err) {
       setToast({ type: 'error', text: err.message });
     }
@@ -87,9 +88,9 @@ export default function AdminResources({ user }) {
   async function handleDeleteConfirmed() {
     try {
       await adminDeleteResource(pendingDelete.id);
+      setResources((prev) => prev.filter((r) => r.id !== pendingDelete.id));
       setToast({ type: 'ok', text: 'Removed from the Hub.' });
       setPendingDelete(null);
-      loadAll();
     } catch (err) {
       setToast({ type: 'error', text: err.message });
     }
@@ -105,8 +106,9 @@ export default function AdminResources({ user }) {
     const ids = siblings.map((r) => r.id);
     [ids[idx], ids[swapWith]] = [ids[swapWith], ids[idx]];
     try {
-      await adminReorderResources(resource.categoryId, ids);
-      loadAll();
+      const updatedSiblings = await adminReorderResources(resource.categoryId, ids);
+      const byId = new Map(updatedSiblings.map((r) => [r.id, r]));
+      setResources((prev) => prev.map((r) => byId.get(r.id) || r));
     } catch (err) {
       setToast({ type: 'error', text: err.message });
     }
@@ -114,8 +116,9 @@ export default function AdminResources({ user }) {
 
   async function handleDragReorder(orderedIds) {
     try {
-      await adminReorderResources(filterCategory, orderedIds);
-      loadAll();
+      const updatedSiblings = await adminReorderResources(filterCategory, orderedIds);
+      const byId = new Map(updatedSiblings.map((r) => [r.id, r]));
+      setResources((prev) => prev.map((r) => byId.get(r.id) || r));
     } catch (err) {
       setToast({ type: 'error', text: err.message });
     }

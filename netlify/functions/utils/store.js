@@ -1,7 +1,18 @@
 // Netlify Blobs data-access helper. Everything the app persists lives in
 // one JSON blob inside the "lowrance-hub-content" store, keyed as
-// "content". Reads use strong consistency so an admin sees their own
-// writes immediately after saving.
+// "content".
+//
+// Consistency note: we deliberately use the default *eventual* consistency
+// here, not "strong". Strong consistency requires an "uncached edge URL"
+// in the request context, which isn't reliably present for functions using
+// the classic handler(event, context) signature ("Lambda compatibility
+// mode") in production - it throws BlobsConsistencyError there even though
+// it works fine locally under `netlify dev`. We don't actually need it:
+// every write below returns the freshly-written object directly, so
+// nothing in this app depends on immediately re-reading a value it just
+// wrote. The only place this matters is the admin dashboard's list refresh
+// after a save, which *could* lag up to ~60s behind under heavy edge-cache
+// propagation delay in rare cases.
 
 import { getStore, connectLambda } from '@netlify/blobs';
 
@@ -17,7 +28,7 @@ function store() {
   // (see categories.js / resources.js) - after that, getStore() here picks
   // up the resulting context automatically. No environment variables or
   // dashboard configuration needed.
-  return getStore({ name: STORE_NAME, consistency: 'strong' });
+  return getStore({ name: STORE_NAME });
 }
 
 export async function readContent() {
