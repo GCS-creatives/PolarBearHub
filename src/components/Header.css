@@ -110,9 +110,9 @@
 .lh-header__artframe {
   position: relative;
   width: 100%;
-  /* Matches the source banner's pixel dimensions so the layout doesn't
+  /* Matches the cropped banner's pixel dimensions so the layout doesn't
      jump while the image loads. */
-  aspect-ratio: 2172 / 724;
+  aspect-ratio: 2172 / 601;
   overflow: hidden;
 }
 
@@ -136,7 +136,7 @@
   position: absolute;
   left: 8%;
   right: 20%;
-  top: 62%;
+  top: 74%;
   max-width: none;
   margin: 0;
 }
