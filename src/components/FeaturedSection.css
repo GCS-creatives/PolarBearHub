@@ -4,10 +4,39 @@
   padding: 0 24px 8px;
 }
 
+.lh-featured__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 6px 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.lh-featured__toggle:hover .lh-featured__heading,
+.lh-featured__toggle:focus-visible .lh-featured__heading {
+  color: var(--lh-blue-700);
+}
+
 .lh-featured__heading {
   font-size: 22px;
   color: var(--lh-blue-900);
-  margin-bottom: 14px;
+  transition: color 120ms ease;
+}
+
+.lh-featured__chevron {
+  font-size: 18px;
+  color: var(--lh-blue-500);
+  transition: transform 160ms ease;
+  margin-top: 2px;
+}
+
+.lh-featured__chevron--collapsed {
+  transform: rotate(-90deg);
 }
 
 .lh-featured__row {

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CategoryIcon from './CategoryIcon.jsx';
 import { PawPrint } from './PolarBear.jsx';
+import { hasFolderArt, folderArtSrc } from '../lib/folderArt.js';
 import './FolderCard.css';
 
 // How long the "opening" flourish plays before we actually navigate.
@@ -13,6 +14,7 @@ export default function FolderCard({ category, resourceCount }) {
   const navigate = useNavigate();
   const [opening, setOpening] = useState(false);
   const timeoutRef = useRef(null);
+  const useArt = hasFolderArt(category.icon);
 
   function handleActivate(e) {
     e.preventDefault();
@@ -31,10 +33,16 @@ export default function FolderCard({ category, resourceCount }) {
       onClick={handleActivate}
     >
       <span className="lh-folder__tab">{category.name}</span>
-      <span className="lh-folder__body">
-        <CategoryIcon icon={category.icon} size={34} color="currentColor" />
-        <PawPrint className="lh-folder__paw" size={16} />
-      </span>
+      {useArt ? (
+        <span className="lh-folder__body lh-folder__body--art">
+          <img src={folderArtSrc(category.icon)} alt="" />
+        </span>
+      ) : (
+        <span className="lh-folder__body">
+          <CategoryIcon icon={category.icon} size={34} color="currentColor" />
+          <PawPrint className="lh-folder__paw" size={16} />
+        </span>
+      )}
       {category.description && <span className="lh-folder__desc">{category.description}</span>}
       <span className="lh-folder__papers" aria-hidden="true">
         <span className="lh-folder__paper lh-folder__paper--1" />

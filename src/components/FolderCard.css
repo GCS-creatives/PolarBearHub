@@ -92,6 +92,23 @@
   opacity: 0.55;
 }
 
+/* Illustrated folder art (from public/images/folders/) replaces the flat
+   color + SVG glyph combo entirely - the image already supplies its own
+   folder shading, icon, and paw print, so no tint/overlay from the
+   nth-child alternation above should show through it. */
+.lh-folder__body--art {
+  background: white !important;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0 0 calc(var(--lh-radius-md) - 2px) calc(var(--lh-radius-md) - 2px);
+}
+
+.lh-folder__body--art img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .lh-folder__desc {
   padding: 0 16px 16px;
   font-size: 13px;
