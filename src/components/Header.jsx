@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom';
 import { BearWaving, PawPrint } from './PolarBear.jsx';
 import './Header.css';
 
-const ART_BREAKPOINT = '(min-width: 641px)';
+const ART_BREAKPOINT = '(min-width: 900px)';
 
 // The illustrated banner is a fixed-aspect-ratio image with baked-in
 // branding text (school name, tagline, badges) - fine here since that
 // content is genuinely static, unlike category/resource names elsewhere
-// in the app. At narrow widths the banner would shrink the text to
-// illegibility, so phones get the original coded header instead. We
-// render one or the other (never both) so there's only ever a single
-// real <input> and <h1> in the DOM/accessibility tree.
+// in the app. Its native width is ~2172px; below ~900px displayed width
+// the baked-in text scales down past comfortable reading size, so tablets
+// and phones get the original coded header instead, where every element
+// is real text that reflows and stays legible at any width. We render one
+// or the other (never both) so there's only ever a single real <input>
+// and <h1> in the DOM/accessibility tree.
 function useIsWideEnoughForArt() {
   const [isWide, setIsWide] = useState(
     () => typeof window !== 'undefined' && window.matchMedia(ART_BREAKPOINT).matches

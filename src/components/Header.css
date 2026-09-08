@@ -100,16 +100,22 @@
   }
 }
 
-/* ---- Illustrated banner variant (>=641px) ---- */
+/* ---- Illustrated banner variant (>=900px, see ART_BREAKPOINT in Header.jsx) ---- */
 
 .lh-header--art {
-  background: none;
+  /* Fills the full width behind the capped artframe below with a
+     gradient that matches the artwork's own top-to-bottom coloring, so
+     ultra-wide viewports get flanking color instead of a hard edge or an
+     oversized logo stretched edge-to-edge. */
+  background: linear-gradient(180deg, var(--lh-blue-900) 0%, var(--lh-blue-700) 55%, var(--lh-ice) 100%);
   padding: 0;
 }
 
 .lh-header__artframe {
   position: relative;
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   /* Matches the cropped banner's pixel dimensions so the layout doesn't
      jump while the image loads. */
   aspect-ratio: 2172 / 601;
@@ -148,13 +154,4 @@
 
 .lh-header__searchwrap--art .lh-header__pawicon {
   left: clamp(10px, 2vw, 16px);
-}
-
-@media (max-width: 900px) {
-  /* The banner's blank area narrows relative to the sticky note/badge as
-     the image scales, so give the search field a bit more breathing room
-     in the mid-size range before the coded fallback takes over at 640px. */
-  .lh-header__searchwrap--art {
-    right: 24%;
-  }
 }
