@@ -7,7 +7,7 @@ const shared = {
 
 export function BearWaving({ className, size = 120 }) {
   return (
-    <svg className={className} width={size} height={size} viewBox="0 0 120 120" role="img" aria-label="Lowrance polar bear mascot waving">
+    <svg className={className} width={size} height={size} viewBox="0 0 120 120" role="img" aria-label="Polar Bear Hub mascot waving">
       <circle cx="60" cy="66" r="40" fill="#ffffff" stroke="#12203a" strokeWidth="3" />
       <circle cx="34" cy="40" r="13" fill="#ffffff" stroke="#12203a" strokeWidth="3" />
       <circle cx="86" cy="40" r="13" fill="#ffffff" stroke="#12203a" strokeWidth="3" />

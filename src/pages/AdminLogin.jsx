@@ -20,7 +20,7 @@ export default function AdminLogin({ user, setUser }) {
     <div className="lh-admin-login">
       <BearWaving size={100} />
       <h1 className="lh-display">Admin Login</h1>
-      <p>Sign in with your invited Lowrance Hub account.</p>
+      <p>Sign in with your invited Polar Bear Hub account.</p>
       {user && !isAdmin(user) && (
         <p className="lh-admin-login__error">
           You're signed in, but this account doesn't have admin access yet. Ask an existing admin to grant the "admin" role.

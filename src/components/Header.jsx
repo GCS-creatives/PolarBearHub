@@ -55,7 +55,7 @@ export default function Header({ query, onQueryChange, isAdmin }) {
             <source srcSet="/images/header-banner.webp" type="image/webp" />
             <img src="/images/header-banner.png" alt="" className="lh-header__artimg" />
           </picture>
-          <h1 className="visually-hidden">Lowrance Middle School Hub</h1>
+          <h1 className="visually-hidden">Polar Bear Hub</h1>
           <p className="visually-hidden">All the info. Right where you need it.</p>
           <Link to="/admin" className="lh-header__admin lh-header__admin--art" aria-label="Admin login">
             {isAdmin ? 'Admin dashboard' : 'Admin'}
@@ -72,9 +72,9 @@ export default function Header({ query, onQueryChange, isAdmin }) {
         <BearWaving className="lh-header__bear" size={96} />
         <div className="lh-header__titles">
           <h1 className="lh-display lh-header__title">
-            Lowrance <span className="lh-header__title-sub">Middle School Hub</span>
+            Polar Bear <span className="lh-header__title-sub">Hub</span>
           </h1>
-          <p className="lh-header__tagline">Everything you need, right where you expect to find it.</p>
+          <p className="lh-header__tagline">All the info. Right where you need it.</p>
         </div>
         <Link to="/admin" className="lh-header__admin" aria-label="Admin login">
           {isAdmin ? 'Admin dashboard' : 'Admin'}

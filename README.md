@@ -1,4 +1,4 @@
-# Lowrance Middle School Hub
+# Polar Bear Hub
 
 A GCS Creatives project by Grace Campbell-Sheran.
 
@@ -25,7 +25,7 @@ netlify/functions/
 ```bash
 git init
 git add .
-git commit -m "Lowrance Middle School Hub - initial scaffold"
+git commit -m "Polar Bear Hub - initial scaffold"
 git branch -M main
 git remote add origin https://github.com/<your-username>/<your-repo>.git
 git push -u origin main
@@ -73,11 +73,14 @@ though it works under `netlify dev` locally) — a known gap between Blobs'
 strong-consistency mode and this function style. It isn't needed here
 anyway: every write returns the freshly-written object directly, and the
 admin dashboard merges that response straight into its own list instead of
-re-fetching, so edits show up instantly regardless. The app creates a store called
-`lowrance-hub-content` on first read and seeds it with the sample
-categories/resources from `src/data/seed.js`. From then on, every admin
-edit writes straight back to that same store with strong-consistency reads,
-so changes appear immediately in the admin dashboard.
+re-fetching, so edits show up instantly regardless.
+
+The app creates a store called `lowrance-hub-content` on first read and
+seeds it with the sample categories/resources from `src/data/seed.js`.
+From then on, every admin edit writes straight back to that same store.
+(This store name is a technical identifier, not user-facing branding —
+it's left as-is through the Polar Bear Hub rename so any content you've
+already saved in production doesn't get orphaned under a new store name.)
 
 If you ever want to reset content back to the seed data, delete the
 `content` key from the `lowrance-hub-content` store in the Netlify dashboard

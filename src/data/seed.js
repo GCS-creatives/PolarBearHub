@@ -1,5 +1,5 @@
 // Sample/placeholder content. Real titles/URLs should be entered by the
-// administrator in /admin — nothing here is a real Lowrance destination.
+// administrator in /admin — nothing here is a real destination.
 
 export const seedCategories = [
   { id: 'schedules', name: 'Schedules', description: 'Bell schedules, delays, and lunch times.', icon: 'calendar', order: 1, active: true },
@@ -19,7 +19,7 @@ export const seedResources = [
   { id: 'r4', title: 'Testing Schedule', url: '#', categoryId: 'schedules', description: 'Dates and times for standardized testing.', keywords: ['testing', 'exam'], active: true, order: 4 },
   { id: 'r5', title: 'Early Release Schedule', url: '#', categoryId: 'schedules', description: 'Shortened-day schedule.', keywords: ['early release'], active: true, order: 5 },
 
-  { id: 'r6', title: 'School Website', url: '#', categoryId: 'communication', description: 'The main Lowrance Middle School website.', keywords: ['website'], active: true, order: 1 },
+  { id: 'r6', title: 'School Website', url: '#', categoryId: 'communication', description: 'The main Polar Bear Hub school website.', keywords: ['website'], active: true, order: 1 },
   { id: 'r7', title: 'Staff Announcements', url: '#', categoryId: 'communication', description: 'Weekly staff bulletin.', keywords: ['announcements', 'bulletin'], active: true, order: 2 },
   { id: 'r8', title: 'Family Communication', url: '#', categoryId: 'communication', description: 'How the school reaches families.', keywords: ['newsletter', 'family'], active: true, order: 3 },
 
